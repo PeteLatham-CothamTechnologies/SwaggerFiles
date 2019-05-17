@@ -1,0 +1,67 @@
+swagger: '2.0'
+info:
+  description: Shopping REST API
+  version: 1.0.0
+  title: Shopping REST API
+
+host: api.kumulos.com
+basePath: /v1/data
+
+schemes:
+  - https
+securityDefinitions:
+  basicAuth:
+    type: basic
+security:
+  - basicAuth: []
+
+paths:
+  /7068_10089_pgl_contents/:
+    get:
+      summary: get list of items
+      description: gets items to be included in shopping lists
+      produces:
+      - application/json
+
+      parameters:
+      - in: query
+        name: params[dummy]
+        type: integer
+        description: dummy
+        required: false
+
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                name:
+                  type: string
+        400:
+          description: bad input parameter
+    post:
+      summary: add an item
+      description: Adds an item to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: Inventory item to add
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists

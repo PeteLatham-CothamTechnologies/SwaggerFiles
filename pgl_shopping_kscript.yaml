@@ -1,0 +1,60 @@
+swagger: '2.0'
+info:
+  description: "This is a simple KScript shopping list API"
+  version: "1.0.0"
+  title: "Revised shopping list API"
+
+host: api.kumulos.com
+basePath: /b2.2/b470e69d-3b99-4f13-bd2f-eae33aee54de
+
+x-flopro-kumulosrpc: true
+
+schemes:
+  - https
+securityDefinitions:
+  basicAuth:
+    type: basic
+security:
+  - basicAuth: []
+
+paths:
+
+  /pglGetLists.json/:
+    post:
+      summary: Get a list of shopping lists
+      description: Get a list of shopping lists
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: params[dummy]
+          type: integer
+          description: dummy
+          required: false
+
+      responses:
+        200:
+          description: Return a standard response format for JSONRPC - if responseCode in this response is a success (1). Any other response code is an error.
+          schema:
+            type: object
+            properties:
+              responseCode:
+                type: integer
+              responseMessage:
+                type: string
+              payload:
+                type: object
+                properties:
+                  count:
+                    type: string
+                  contents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        listName:
+                          type: string
+                        listContents:
+                          type: string
+                        listID:
+                          type: string

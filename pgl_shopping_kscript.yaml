@@ -46,7 +46,7 @@ paths:
                 type: object
                 properties:
                   count:
-                    type: string
+                    type: integer
                   contents:
                     type: array
                     items:
@@ -55,6 +55,6 @@ paths:
                         listName:
                           type: string
                         listContents:
-                          type: string
+                          type: integer
                         listID:
-                          type: string
+                          type: integer

@@ -18,6 +18,93 @@ security:
   - basicAuth: []
 
 paths:
+  /pglAddContentToList.json/:
+    post:
+      summary: Puts a content item on a shopping list
+      description: Links an item to a list in the associate table
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: listID
+          type: integer
+          description: The ID of the list we're adding to
+          required: true
+        - in: formData
+          name: contentID
+          type: integer
+          description: The ID of the content item we're adding
+          required: true
+        - in: formData
+          name: quantity
+          type: integer
+          description: How many we want to buy
+          required: true
+
+      responses:
+        200:
+          description: Return a standard response format for JSONRPC - if responseCode in this response is a success (1). Any other response code is an error.
+          schema:
+            type: object
+            properties:
+              responseCode:
+                type: integer
+              responseMessage:
+                type: string
+              payload:
+                type: integer
+
+  /pglCreateContent.json/:
+    post:
+      summary: Registers a new content item
+      description: Registers a new content item
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: contentName
+          type: string
+          description: The name of the content item we're adding
+          required: true
+
+      responses:
+        200:
+          description: Return a standard response format for JSONRPC - if responseCode in this response is a success (1). Any other response code is an error.
+          schema:
+            type: object
+            properties:
+              responseCode:
+                type: integer
+              responseMessage:
+                type: string
+              payload:
+                type: integer
+
+  /pglCreateList.json/:
+    post:
+      summary: Registers a new shopping list
+      description: Registers a new shopping list
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: listName
+          type: string
+          description: The name of the shopping list we're adding
+          required: true
+
+      responses:
+        200:
+          description: Return a standard response format for JSONRPC - if responseCode in this response is a success (1). Any other response code is an error.
+          schema:
+            type: object
+            properties:
+              responseCode:
+                type: integer
+              responseMessage:
+                type: string
+              payload:
+                type: integer
 
   /pglGetLists.json/:
     post:
@@ -58,3 +145,164 @@ paths:
                           type: integer
                         listID:
                           type: integer
+
+/pglGetContents.json/:
+  post:
+    summary: Get a list of content items
+    description: Get a list of content items
+    consumes:
+      - application/x-www-form-urlencoded
+    parameters:
+      - in: formData
+        name: params[dummy]
+        type: integer
+        description: dummy
+        required: false
+
+    responses:
+      200:
+        description: Return a standard response format for JSONRPC - if responseCode in this response is a success (1). Any other response code is an error.
+        schema:
+          type: object
+          properties:
+            responseCode:
+              type: integer
+            responseMessage:
+              type: string
+            payload:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  contentID:
+                    type: integer
+
+/pglGetListContents.json/:
+  post:
+    summary: Get a list of content items
+    description: Get a list of content items
+    consumes:
+      - application/x-www-form-urlencoded
+    parameters:
+      - in: formData
+        name: listID
+        type: integer
+        description: The ID of the list to be examined
+        required: true
+
+    responses:
+      200:
+        description: Return a standard response format for JSONRPC - if responseCode in this response is a success (1). Any other response code is an error.
+        schema:
+          type: object
+          properties:
+            responseCode:
+              type: integer
+            responseMessage:
+              type: string
+            payload:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  contentID:
+                    type: integer
+                  quantity:
+                    type: integer
+
+  /pglRemoveContent.json/:
+    post:
+      summary: Deletes a content item
+      description: Deletes a content item
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: contentName
+          type: string
+          description: The name of the content item we're removing
+          required: false
+        - in: formData
+          name: contentID
+          type: integer
+          description: The ID of the content item we're removing
+          required: false
+
+      responses:
+        200:
+          description: Return a standard response format for JSONRPC - if responseCode in this response is a success (1). Any other response code is an error.
+          schema:
+            type: object
+            properties:
+              responseCode:
+                type: integer
+              responseMessage:
+                type: string
+              payload:
+                type: integer
+
+  /pglRemoveList.json/:
+    post:
+      summary: Deletes a shopping list
+      description: Deletes a shopping list
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: listName
+          type: string
+          description: The name of the shopping list we're removing
+          required: false
+        - in: formData
+          name: listID
+          type: integer
+          description: The ID of the shopping list we're removing
+          required: false
+
+      responses:
+        200:
+          description: Return a standard response format for JSONRPC - if responseCode in this response is a success (1). Any other response code is an error.
+          schema:
+            type: object
+            properties:
+              responseCode:
+                type: integer
+              responseMessage:
+                type: string
+              payload:
+                type: integer
+
+  /pglRemoveItemFromList.json/:
+    post:
+      summary: Deletes a content item from a shopping list
+      description: Removes the link between an item and a list in the associate table
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: contentID
+          type: integer
+          description: The ID of the content item we're removing
+          required: false
+        - in: formData
+          name: listID
+          type: integer
+          description: The ID of the shopping list we're removing
+          required: false
+
+      responses:
+        200:
+          description: Return a standard response format for JSONRPC - if responseCode in this response is a success (1). Any other response code is an error.
+          schema:
+            type: object
+            properties:
+              responseCode:
+                type: integer
+              responseMessage:
+                type: string
+              payload:
+                type: integer

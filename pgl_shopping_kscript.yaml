@@ -146,73 +146,73 @@ paths:
                         listID:
                           type: integer
 
-/pglGetContents.json/:
-  post:
-    summary: Get a list of content items
-    description: Get a list of content items
-    consumes:
-      - application/x-www-form-urlencoded
-    parameters:
-      - in: formData
-        name: params[dummy]
-        type: integer
-        description: dummy
-        required: false
+  /pglGetContents.json/:
+    post:
+      summary: Get a list of content items
+      description: Get a list of content items
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: params[dummy]
+          type: integer
+          description: dummy
+          required: false
 
-    responses:
-      200:
-        description: Return a standard response format for JSONRPC - if responseCode in this response is a success (1). Any other response code is an error.
-        schema:
-          type: object
-          properties:
-            responseCode:
-              type: integer
-            responseMessage:
-              type: string
-            payload:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  contentID:
-                    type: integer
+      responses:
+        200:
+          description: Return a standard response format for JSONRPC - if responseCode in this response is a success (1). Any other response code is an error.
+          schema:
+            type: object
+            properties:
+              responseCode:
+                type: integer
+              responseMessage:
+                type: string
+              payload:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    contentID:
+                      type: integer
 
-/pglGetListContents.json/:
-  post:
-    summary: Get a list of content items
-    description: Get a list of content items
-    consumes:
-      - application/x-www-form-urlencoded
-    parameters:
-      - in: formData
-        name: listID
-        type: integer
-        description: The ID of the list to be examined
-        required: true
+  /pglGetListContents.json/:
+    post:
+      summary: Get a list of content items
+      description: Get a list of content items
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - in: formData
+          name: listID
+          type: integer
+          description: The ID of the list to be examined
+          required: true
 
-    responses:
-      200:
-        description: Return a standard response format for JSONRPC - if responseCode in this response is a success (1). Any other response code is an error.
-        schema:
-          type: object
-          properties:
-            responseCode:
-              type: integer
-            responseMessage:
-              type: string
-            payload:
-              type: array
-              items:
-                type: object
-                properties:
-                  name:
-                    type: string
-                  contentID:
-                    type: integer
-                  quantity:
-                    type: integer
+      responses:
+        200:
+          description: Return a standard response format for JSONRPC - if responseCode in this response is a success (1). Any other response code is an error.
+          schema:
+            type: object
+            properties:
+              responseCode:
+                type: integer
+              responseMessage:
+                type: string
+              payload:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    contentID:
+                      type: integer
+                    quantity:
+                      type: integer
 
   /pglRemoveContent.json/:
     post:

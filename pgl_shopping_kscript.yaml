@@ -26,17 +26,17 @@ paths:
         - application/x-www-form-urlencoded
       parameters:
         - in: formData
-          name: listID
+          name: params[listID]
           type: integer
           description: The ID of the list we're adding to
           required: true
         - in: formData
-          name: contentID
+          name: params[contentID]
           type: integer
           description: The ID of the content item we're adding
           required: true
         - in: formData
-          name: quantity
+          name: params[quantity]
           type: integer
           description: How many we want to buy
           required: true
@@ -62,7 +62,7 @@ paths:
         - application/x-www-form-urlencoded
       parameters:
         - in: formData
-          name: contentName
+          name: params[contentName]
           type: string
           description: The name of the content item we're adding
           required: true
@@ -187,7 +187,7 @@ paths:
         - application/x-www-form-urlencoded
       parameters:
         - in: formData
-          name: listID
+          name: params[listID]
           type: integer
           description: The ID of the list to be examined
           required: true
@@ -222,12 +222,12 @@ paths:
         - application/x-www-form-urlencoded
       parameters:
         - in: formData
-          name: contentName
+          name: params[contentName]
           type: string
           description: The name of the content item we're removing
           required: false
         - in: formData
-          name: contentID
+          name: params[contentID]
           type: integer
           description: The ID of the content item we're removing
           required: false
@@ -253,12 +253,12 @@ paths:
         - application/x-www-form-urlencoded
       parameters:
         - in: formData
-          name: listName
+          name: params[listName]
           type: string
           description: The name of the shopping list we're removing
           required: false
         - in: formData
-          name: listID
+          name: params[listID]
           type: integer
           description: The ID of the shopping list we're removing
           required: false
@@ -284,12 +284,12 @@ paths:
         - application/x-www-form-urlencoded
       parameters:
         - in: formData
-          name: contentID
+          name: params[contentID]
           type: integer
           description: The ID of the content item we're removing
           required: false
         - in: formData
-          name: listID
+          name: params[listID]
           type: integer
           description: The ID of the shopping list we're removing
           required: false

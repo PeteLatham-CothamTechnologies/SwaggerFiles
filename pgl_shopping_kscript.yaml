@@ -203,16 +203,23 @@ paths:
               responseMessage:
                 type: string
               payload:
-                type: array
-                items:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                    contentID:
-                      type: integer
-                    quantity:
-                      type: integer
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  name:
+                    type: string
+                  contents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        contentID:
+                          type: integer
+                        quantity:
+                          type: integer
 
   /pglRemoveContent.json/:
     post:

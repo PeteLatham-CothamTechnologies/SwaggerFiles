@@ -148,8 +148,8 @@ paths:
 
   /pglGetContents.json/:
     post:
-      summary: Get a list of content items
-      description: Get a list of content items
+      summary: Get all content items
+      description: Get all content items
       consumes:
         - application/x-www-form-urlencoded
       parameters:

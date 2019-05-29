@@ -205,20 +205,20 @@ paths:
               payload:
                 type: object
                 properties:
-                  count:
+                  contentCount:
                     type: integer
-                  name:
+                  listName:
                     type: string
                   contents:
                     type: array
                     items:
                       type: object
                       properties:
-                        name:
+                        contentName:
                           type: string
                         contentID:
                           type: integer
-                        quantity:
+                        contentQuantity:
                           type: integer
 
   /pglRemoveContent.json/:
